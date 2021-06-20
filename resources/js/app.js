@@ -1,0 +1,1 @@
+console.log("thisis is resources file js");
