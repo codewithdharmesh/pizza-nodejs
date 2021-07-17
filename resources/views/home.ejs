@@ -17,59 +17,31 @@
     <section class="menu container mx-auto py-8">
         <h1 class="font-bold mb-8 ">All pizzas</h1>
 
-        <div class="grid grid-col-4 col-gap-12 ">
+        <div class="grid grid-cols-4 col-gap-12 row-gap-16">
             
-            <div width="100">
-                <img class="h-40 mb-4 mx-auto" src="/img/pizza.jpg" alt="">
-                <div>
-                    <h2 class="mb-4 text-lg text-center">margarita</h2>
-                    <span class=" mb-4 text-lg text-center ">small</span>
+       <% pizzas.forEach(function(pizza){  %>
 
-                    <div class="flex items-center justify-around">
-                        <span>400</span>
-                        <button>
-                            <span>+</span>
-                            <span>Add</span>
-                        </button>
-                    </div>
+        <div >
+            <img class="h-40 mb-4 mx-auto" src="/img/<%= pizza.image%>" alt="">
+            <div class="text-center">
+                <h2 class="mb-4 text-lg "><%= pizza.name%></h2>
+                <span class="size py-1 px-4 rounded-full text-xs "><%= pizza.size%></span>
 
+                <div class="flex items-center justify-around">
+                    <span><%= pizza.price%></span>
+                    <button class="rounded-full btn-primary flex ">
+                        <span>+</span>
+                        <span>Add</span>
+                    </button>
                 </div>
+
             </div>
+        </div>
+   
+
+     <%  })%>
        
        
-       
-            <div>
-                <img class="h-40 mb-4 mx-auto" src="/img/pizza.jpg" alt="">
-                <div>
-                    <h2 class="mb-4 text-lg text-center">margarita</h2>
-                    <span class=" mb-4 text-lg text-center ">small</span>
-
-                    <div class="flex items-center justify-around">
-                        <span>400</span>
-                        <button>
-                            <span>+</span>
-                            <span>Add</span>
-                        </button>
-                    </div>
-
-                </div>
-            </div>
-            <div>
-                <img class="h-40 mb-4 mx-auto" src="/img/pizza.jpg" alt="">
-                <div>
-                    <h2 class="mb-4 text-lg text-center">margarita</h2>
-                    <span class=" mb-4 text-lg text-center ">small</span>
-
-                    <div class="flex items-center justify-around">
-                        <span>400</span>
-                        <button>
-                            <span>+</span>
-                            <span>Add</span>
-                        </button>
-                    </div>
-
-                </div>
-            </div>
        
        
        
