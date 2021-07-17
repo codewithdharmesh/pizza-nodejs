@@ -15,7 +15,7 @@ const expresslayout = require("express-ejs-layouts");
 
 const session =  require("express-session");
 const flash = require("express-flash");
-// const MongoDbStore = require('connect-mongo')(session)
+const MongoDbStore = require('connect-mongo')(session)
 
 const publicpath = path.join(__dirname,'public/css')
     
