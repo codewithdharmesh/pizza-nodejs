@@ -14,8 +14,9 @@ const pizzacollection = require("./app/models/pizzamodel");
 const expresslayout = require("express-ejs-layouts");
 
 const session =  require("express-session");
+const uuid = require('uuid').v4
 const flash = require("express-flash");
-const MongoDbStore = require('connect-mongo')(session)
+const MongoDbStore = require('connect-mongodb-session')(session);
 
 const publicpath = path.join(__dirname,'public/css')
     
@@ -33,21 +34,24 @@ connection.once('open',()=>{
 
 
 // sessionn store
-// new MongoDbStore({
-
-//     mongooseConnection: connection,
-//     collection: 'sesons'
-// })
+ let astore = new MongoDbStore({
+    uri:'mongodb://localhost:27017/pizza',
+    // mongooseConnection: connection,
+    collection: 'sesons'
+})
 
 // session config
-app.use(session({ 
-    secret: process.env.cookie_secret,
-    resave: false,
-    // store: mongoStore,
-    saveUninitialized:false,
-    cookie:{maxAge: 1000 * 60 *60  }  // 24 hours
-    // cookie:{maxAge:null}
-
+app.use(session({
+  genid: (req) => {
+    console.log('Inside the session middleware')
+    console.log(req.sessionID)
+    return uuid() // use UUIDs for session IDs
+  },
+  store: astore ,
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: true,
+  
 }))
 
 
@@ -63,6 +67,8 @@ require("./routes/web")(app);
 app.use(flash())
 //Assets
 app.use(express.static('public'))
+
+
 
 
 // // insert data function **************************************
