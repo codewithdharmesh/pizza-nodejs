@@ -1,7 +1,7 @@
 // console.log("this is js file dynamic resources ");
 
 import axios from 'axios';
-import pnotify from 'pnotify';
+
 
 
 
@@ -13,10 +13,7 @@ function updateCart(pizza){
         (res)=>{
             // console.log(res)
             cartCounter.innerText = res.data.totalQty
-            alert({
-                text: "I'm an alert.",
-                type: 'info'
-              });
+           alert('Item added to cart')
            
         }
     )
