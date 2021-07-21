@@ -37,7 +37,7 @@ connection.once('open',()=>{
  let astore = new MongoDbStore({
     uri:'mongodb://localhost:27017/pizza',
     // mongooseConnection: connection,
-    collection: 'sesons'
+    collection: 'sessions'
 })
 
 // session config
@@ -51,6 +51,7 @@ app.use(session({
   secret: 'keyboard cat',
   resave: false,
   saveUninitialized: true,
+  cookie: { maxAge: 1000* 60 *60 *60 *24} //24 hours
   
 }))
 
@@ -58,6 +59,13 @@ app.use(session({
 
 //set template engine 
 app.use(expresslayout);
+app.use(express.json())
+
+//global middleware
+app.use((req,res,next)=>{
+  res.locals.session = req.session
+  next()
+})
 
 app.set('views', path.join(__dirname,'/resources/views'))
 app.set('view engine','ejs' )

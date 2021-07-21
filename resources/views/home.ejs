@@ -29,7 +29,7 @@
 
                 <div class="flex items-center justify-around">
                     <span><%= pizza.price%></span>
-                    <button class="rounded-full btn-primary flex ">
+                    <button data-pizza=<%= JSON.stringify(pizza) %> class="add-to-cart rounded-full btn-primary flex ">
                         <span>+</span>
                         <span>Add</span>
                     </button>

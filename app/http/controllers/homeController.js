@@ -5,7 +5,8 @@ function homeController(){
            const pizzas = await pizzacollection.find();
         //    console.log(pizzas);
            res.render('home',{pizzas:pizzas})
-        }
+        },
+       
 
     }
 }

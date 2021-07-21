@@ -14,7 +14,7 @@ const createSchema = new mongoose.Schema({
     },
    
     price:{
-        type:String,
+        type:Number,
         required:true
     },
     size:{
